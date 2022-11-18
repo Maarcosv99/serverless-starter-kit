@@ -1,0 +1,52 @@
+version: "3.8"
+
+services:
+  localstack:
+    image: localstack/localstack:latest
+    environment:
+      PERSISTENCE: 1
+      LAMBDA_EXECUTOR: 'local'
+      EDGE_PORT: 4566
+      SERVICES: 'dynamodb,lambda,sls,sqs,s3'
+      DOCKER_HOST: 'unix:///var/run/docker.sock'
+      HOSTNAME_EXTERNAL: localstack
+    ports:
+      - '4569:4569'
+      - '4566:4566'
+      - '4563:4563'
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+  app:
+    build: .
+    command: npm run start:dev
+    volumes:
+      - ./src:/usr/app/src
+      - ./serverless.ts:/usr/app/serverless.ts
+      - ./tsconfig.build.json:/usr/app/tsconfig.build.json
+      - ./tsconfig.json:/usr/app/tsconfig.json
+      - ./tsconfig.paths.json:/usr/app/tsconfig.paths.json
+      - nodemodules:/src/node_modules
+    env_file:
+      - ./config/environments/dev.env
+    restart: always
+    ports:
+      - '3000:3000'
+    links:
+      - localstack
+    depends_on:
+      - localstack
+
+  dynamodb-admin:
+    image: aaronshaf/dynamodb-admin
+    tty: true
+    ports:
+      - '8001:8001'
+    depends_on:
+      - localstack
+    environment:
+      DYNAMO_ENDPOINT: http://localstack:4566
+      AWS_REGION: 'sa-east-1'
+
+volumes:
+  nodemodules: {}

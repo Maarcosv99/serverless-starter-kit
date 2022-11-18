@@ -1,0 +1,17 @@
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+
+# esbuild directories
+.esbuild
+
+# Private files
+credentials.csv
+
+# code editor directories
+.idea
+.vscode
+lib

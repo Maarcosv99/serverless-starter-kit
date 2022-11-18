@@ -1,0 +1,30 @@
+### Create account
+POST {{host}}/create
+Content-Type: application/json
+
+{
+  "email": "{{user_email}}",
+  "password": "12345678"
+}
+
+### Get account
+GET {{host}}/search?email={{user_email}}
+Accept: application/json
+
+### Update account
+PUT {{host}}/update
+Content-Type: application/json
+
+{
+  "email": "{{user_email}}",
+  "password": "87654321",
+  "company_name": "coplayer business"
+}
+
+### Delete account
+DELETE {{host}}/delete
+Content-Type: application/json
+
+{
+  "email": "{{user_email}}"
+}

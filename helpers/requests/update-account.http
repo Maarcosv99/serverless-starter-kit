@@ -1,0 +1,8 @@
+PUT {{host}}/update
+Content-Type: application/json
+
+{
+  "email": "{{user_email}}",
+  "password": "87654321",
+  "company_name": "my business"
+}

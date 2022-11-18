@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@logic/*": ["src/logic/*"],
+      "@rest/*": ["src/rest/*"],
+      "@libraries/*": ["src/libraries/*"],
+      "@helpers/*": ["helpers/*"],
+      "@config/*": ["config/*"],
+      "@infrastructure/*": ["src/infrastructure/*"],
+      "@tests/*": ["src/tests/*"]
+    }
+  }
+}

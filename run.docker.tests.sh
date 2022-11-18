@@ -1,0 +1,1 @@
+docker compose exec app npm run test:modules

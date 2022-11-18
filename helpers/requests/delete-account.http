@@ -1,0 +1,6 @@
+DELETE {{host}}/delete
+Content-Type: application/json
+
+{
+  "email": "{{user_email}}"
+}
