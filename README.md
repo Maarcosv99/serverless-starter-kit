@@ -1,8 +1,6 @@
 <h1 align="center">🌍 Serverless Starter Kit</h1>
 <p align="center">To quickly create microservices.</p>
 
-<hr />
-
 ## Clone the repository
 
 ```
