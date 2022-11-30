@@ -1,6 +1,7 @@
 import type { AWS } from '@serverless/typescript';
 
-import { DynamoDBResources, DynamoDBIamRole } from '@config/dynamodb'
+import { DynamoDBResources } from '@config/dynamodb'
+import roleDynamoDB from '@config/dynamodb/iam.role'
 import { rests } from '@functions/rest'
 
 const serverlessConfiguration: AWS = {
@@ -20,7 +21,11 @@ const serverlessConfiguration: AWS = {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true
     },
-    ...DynamoDBIamRole,
+    iam: {
+      role: {
+        statements: [ roleDynamoDB ]
+      }
+    },
     environment: {
       LOCALSTACK_HOST: "${env:LOCALSTACK_HOST, 'localstack'}",
       DYNAMODB_ENDPOINT: "${env:DYNAMODB_ENDPOINT, 'http://localstack:4566'}",
