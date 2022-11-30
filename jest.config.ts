@@ -12,6 +12,7 @@ const jestConfig: JestConfigWithTsJest = {
   coverageProvider: "babel",
   coverageDirectory: "src",
   coveragePathIgnorePatterns: ["/node_modules/", "/lib/"],
+  modulePathIgnorePatterns: ["lib"],
   testTimeout: 15 * SECONDS_IN_MILLISECONDS
 }
 

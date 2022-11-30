@@ -71,8 +71,10 @@ bash run.deploy.prod.sh
  │   └─── 📂 infrastructure/ # Databases, message buses, etc...
  │   └─── 📂 libraries/ # In here is where I keep shared libraries.
  │   └─── 📂 logic/ # Business logic based lambdas.
- │   └─── 📂 rest/ # Outward facing REST APIs
- │   └─── 📂 tests/ # Test settings.
+ │   └─── 📂 functions/
+ │        └─── 📂 rest/ # Outward facing REST APIs
+ │        └─── 📂 services/ # Outward facing SERVICES
+ │   └─── 📂 tests/ # Test setup.
  └── 📂 config/ # Serverless.yml settings code blocks
  └── 📂 helpers/ # Http requests and seed database scripts
 ```

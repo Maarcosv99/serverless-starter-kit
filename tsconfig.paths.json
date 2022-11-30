@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@logic/*": ["src/logic/*"],
-      "@rest/*": ["src/rest/*"],
+      "@functions/*": ["src/functions/*"],
       "@libraries/*": ["src/libraries/*"],
       "@helpers/*": ["helpers/*"],
       "@config/*": ["config/*"],

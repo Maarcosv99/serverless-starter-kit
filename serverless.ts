@@ -1,7 +1,7 @@
 import type { AWS } from '@serverless/typescript';
 
 import { DynamoDBResources, DynamoDBIamRole } from '@config/dynamodb'
-import { userRouters } from './src/rest'
+import { rests } from '@functions/rest'
 
 const serverlessConfiguration: AWS = {
   service: 'serverless-typescript',
@@ -30,9 +30,7 @@ const serverlessConfiguration: AWS = {
       IS_OFFLINE: "${env:IS_OFFLINE, 'false'}"
     }
   },
-  functions: {
-    ...userRouters
-  },
+  functions: { ...rests },
   package: {
     individually: true,
     excludeDevDependencies: true
