@@ -4,16 +4,18 @@ services:
   localstack:
     image: localstack/localstack:latest
     environment:
-      PERSISTENCE: 1
+      DEBUG: 1
       LAMBDA_EXECUTOR: 'local'
       EDGE_PORT: 4566
-      SERVICES: 'dynamodb,lambda,sls,sqs,s3'
+      SERVICES: 'cloudformation,cloudfront,apigateway,apigatewayv2,iam,dynamodb,lambda,sls,sqs,s3'
       DOCKER_HOST: 'unix:///var/run/docker.sock'
       HOSTNAME_EXTERNAL: localstack
+      EAGER_SERVICE_LOADING: 1
     ports:
-      - '4569:4569'
-      - '4566:4566'
-      - '4563:4563'
+      - "4510-4559:4510-4559" # external service port range
+      - "4566:4566" # LocalStack Edge Proxy
+      - "53:53" # Dns
+      - "53:53/udp" # Dns
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
 
