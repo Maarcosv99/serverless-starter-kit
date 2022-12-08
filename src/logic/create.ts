@@ -1,12 +1,14 @@
 import { UserCreate } from '@infrastructure/database/schemas/user'
-import { UserCrud } from '@infrastructure/database/crud/user'
+import { User } from '@infrastructure/database/model/user'
+import { CrudUser } from '@infrastructure/database/crud'
 import { JsonResponse, STATUS_CODE } from '@libraries/api-helpers'
 
-const crud = new UserCrud()
+const crud = new CrudUser()
 
 export async function createUser(payload: UserCreate) {
   try {
-    const user = await crud.create(payload)
+    const user = new User(payload)
+    await crud.create(user)
     const response = user ? { email: user.email } : {}
     return JsonResponse(STATUS_CODE.CREATE, response)
   } catch (error) {

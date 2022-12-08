@@ -9,7 +9,7 @@ jspm_packages
 .esbuild
 
 # Private files
-credentials.csv
+
 
 # code editor directories
 .idea

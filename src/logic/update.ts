@@ -1,12 +1,11 @@
-import { UserCrud } from '@infrastructure/database/crud/user'
+import { CrudUser } from '@infrastructure/database/crud'
 import { UserUpdate } from '@infrastructure/database/schemas/user'
 import { JsonResponse, STATUS_CODE } from '@libraries/api-helpers'
 
-const crud = new UserCrud()
+const crud = new CrudUser()
 
-export async function updateUser(payload: UserUpdate) {
+export async function updateUser(email: string, payload: UserUpdate) {
   try {
-    const { email } = payload
     await crud.update(email, payload)
     return JsonResponse(STATUS_CODE.UPDATE, {})
   } catch (error) {

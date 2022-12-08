@@ -1,7 +1,7 @@
-import { UserCrud } from '@infrastructure/database/crud/user'
+import { CrudUser } from '@infrastructure/database/crud'
 import { JsonResponse, STATUS_CODE } from '@libraries/api-helpers'
 
-const crud = new UserCrud()
+const crud = new CrudUser()
 
 export async function getUser(email: string) {
   try {
@@ -10,9 +10,7 @@ export async function getUser(email: string) {
     if (user) {
       response = {
         email: user.email,
-        company_name: user.company_name || undefined,
-        videosCount: 0,
-        domainsCount: 0
+        company_name: user.company_name || undefined
       }
     }
     return JsonResponse(STATUS_CODE.READ, response)

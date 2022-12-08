@@ -8,5 +8,5 @@ export const schema: SchemaOf<UserUpdate> = object({
 })
 
 export type schemaEvent = {
-  body: UserUpdate
+  body: UserUpdate & { email: string }
 }

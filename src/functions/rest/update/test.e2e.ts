@@ -43,9 +43,7 @@ describe('Testing user http update', () => {
       statusCode: 200,
       body: {
         email: user.email,
-        company_name: company_name,
-        videosCount: 0,
-        domainsCount: 0
+        company_name: company_name
       }
     })
   })
@@ -57,17 +55,17 @@ describe('Testing user http update', () => {
     let response = await invokeLambda(handler, payload)
     response.body = JSON.parse(response.body)
     expect(response).toMatchObject({
-      statusCode: 204,
-      body: {}
+      statusCode: 404,
+      body: {
+        errors: ['company_name must be at least 2 characters']
+      }
     })
     let user_updated = await getUser(user.email)
     user_updated.body = JSON.parse(user_updated.body)
     expect(user_updated).toMatchObject({
       statusCode: 200,
       body: {
-        email: user.email,
-        videosCount: 0,
-        domainsCount: 0
+        email: user.email
       }
     })
     expect(user_updated.body).toEqual(

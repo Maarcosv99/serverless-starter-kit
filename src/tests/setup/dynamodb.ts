@@ -1,27 +1,44 @@
-import { Table } from 'dynamodb-onetable'
-import { table } from '@infrastructure/database/setup/table'
+import { client } from '@infrastructure/database/setup/client'
+import {
+    CreateTableCommand,
+    DeleteTableCommand,
+    DescribeTableCommand
+} from '@aws-sdk/client-dynamodb'
+import { DynamoDBResources } from '@config/dynamodb'
+
 
 class DynamoDBSetupTest {
-  table: Table
-
-  constructor() {
-    this.table = table
-  }
-
-  async createTable() {
-    if (!await this.table.exists()) {
-      await this.table.createTable()
+    async exists(): Promise<boolean> {
+        try {
+            await client.send(
+                new DescribeTableCommand({
+                    TableName: process.env.TABLE!
+                })
+            )
+            return true
+        } catch {
+            return false
+        }
     }
-  }
 
-  async deleteTable() {
-    await this.table.deleteTable('DeleteTableForever')
-  }
+    async createTable(): Promise<void> {
+        if (!await this.exists()) {
+            await client.send(
+                new CreateTableCommand({
+                    ...DynamoDBResources.Table.Properties,
+                    TableName: process.env.TABLE!
+                })
+            )
+        }
+    }
 
-  async cleanTable() {
-    await this.deleteTable()
-    await this.createTable()
-  }
+    async deleteTable(): Promise<void>  {
+        await client.send(
+            new DeleteTableCommand({
+                TableName: process.env.TABLE!
+            })
+        )
+    }
 }
 
 export {

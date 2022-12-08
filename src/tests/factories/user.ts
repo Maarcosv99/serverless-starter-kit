@@ -1,13 +1,14 @@
 import { faker } from '@faker-js/faker'
 import { UserCreate } from '@infrastructure/database/schemas/user'
-import { UserCrud } from '@infrastructure/database/crud/user'
+import { CrudUser } from '@infrastructure/database/crud'
 import { BaseFactory } from "@tests/factories/base"
+import { User } from '@infrastructure/database/model/user'
 
-export class UserFactory implements BaseFactory<UserCrud , UserCreate>{
-  crud: UserCrud
+export class UserFactory implements BaseFactory<CrudUser , UserCreate>{
+  crud: CrudUser
 
   constructor() {
-    this.crud = new UserCrud()
+    this.crud = new CrudUser()
   }
 
   generate_random(): UserCreate {
@@ -18,6 +19,7 @@ export class UserFactory implements BaseFactory<UserCrud , UserCreate>{
   }
 
   async create(payload: UserCreate = this.generate_random()) {
-    return await this.crud.create(payload)
+    const user = new User(payload)
+    return await this.crud.create(user)
   }
 }

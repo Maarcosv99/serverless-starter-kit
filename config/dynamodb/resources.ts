@@ -5,12 +5,12 @@ export default {
       TableName: '${self:provider.environment.TABLE}',
       BillingMode: 'PAY_PER_REQUEST',
       KeySchema: [
-        { AttributeName: 'pk', KeyType: 'HASH' },
-        { AttributeName: 'sk', KeyType: 'RANGE' },
+        { AttributeName: 'PK', KeyType: 'HASH' },
+        { AttributeName: 'SK', KeyType: 'RANGE' },
       ],
       AttributeDefinitions: [
-        { AttributeName: 'pk', AttributeType: 'S' },
-        { AttributeName: 'sk', AttributeType: 'S' },
+        { AttributeName: 'PK', AttributeType: 'S' },
+        { AttributeName: 'SK', AttributeType: 'S' },
         { AttributeName: 'GSI1PK', AttributeType: 'S' },
         { AttributeName: 'GSI1SK', AttributeType: 'S' },
         { AttributeName: 'GSI2PK', AttributeType: 'S' },

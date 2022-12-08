@@ -9,7 +9,7 @@ beforeEach(async () => {
   await dynamoDB.createTable()
 })
 
-afterAll(async () => {
+afterEach(async () => {
   await dynamoDB.deleteTable()
 })
 
@@ -21,9 +21,7 @@ describe('Testing logic business get', () => {
     expect(response).toMatchObject({
       statusCode: 200,
       body: {
-        email: user.email,
-        videosCount: 0,
-        domainsCount: 0
+        email: user.email
       }
     })
   })

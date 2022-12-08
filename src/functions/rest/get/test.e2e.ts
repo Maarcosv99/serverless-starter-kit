@@ -33,9 +33,7 @@ describe('Testing user http get', () => {
     expect(response).toMatchObject({
       statusCode: 200,
       body: {
-        email: user.email,
-        domainsCount: 0,
-        videosCount: 0
+        email: user.email
       }
     })
   })

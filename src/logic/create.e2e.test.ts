@@ -9,7 +9,7 @@ beforeEach(async () => {
   await dynamoDB.createTable()
 })
 
-afterAll(async () => {
+afterEach(async () => {
   await dynamoDB.deleteTable()
 })
 
