@@ -1,5 +1,8 @@
+@host = http://localhost:4566/restapis/3sa1tqkv5u/local/_user_request_
+@user_email = test@gmail.com
+
 ### Create account
-POST {{host}}/create
+POST {{host}}/user/create
 Content-Type: application/json
 
 {
@@ -8,11 +11,11 @@ Content-Type: application/json
 }
 
 ### Get account
-GET {{host}}/search?email={{user_email}}
+GET {{host}}/user/search?email={{user_email}}
 Accept: application/json
 
 ### Update account
-PUT {{host}}/update
+PUT {{host}}/user/update
 Content-Type: application/json
 
 {
@@ -22,7 +25,7 @@ Content-Type: application/json
 }
 
 ### Delete account
-DELETE {{host}}/delete
+DELETE {{host}}/user/delete
 Content-Type: application/json
 
 {

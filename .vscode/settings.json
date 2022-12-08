@@ -1,0 +1,25 @@
+
+
+{
+    "editor.guides.bracketPairs": "active",
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.expand": false,
+    "explorer.fileNesting.patterns": {
+        "*.ts": "${capture}.js, ${capture}.test.ts, ${capture}.spec.ts, ${capture}.unit.test.ts, ${capture}.int.test.ts, ${capture}.e2e.test.ts",
+        "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+        "*.jsx": "${capture}.js",
+        "*.tsx": "${capture}.ts",
+        "tsconfig.json": "tsconfig.*.json",
+        "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, .nvmrc, README.md, LICENSE, .gitignore, .editorconfig",
+        "docker-compose.yml": "Dockerfile, .dockerignore",
+        "run.docker.sh": "run.docker.deploy.sh, run.docker.tests.sh, run.docker.deploy_and_test.sh",
+        "run.deploy.prod.sh": "run.deploy.dev.sh",
+        "jest.config.ts": "jest.config.unit.ts, jest.config.int.ts, jest.config.e2e.ts"
+    },
+    "files.exclude":{
+        "**/.git": true,
+        "**/node_modules": true,
+        "**/.idea": true,
+        "**/.serverless": true
+    }
+}

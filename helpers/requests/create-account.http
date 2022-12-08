@@ -1,7 +1,0 @@
-POST {{host}}/create
-Content-Type: application/json
-
-{
-  "email": "{{user_email}}",
-  "password": "12345678"
-}
