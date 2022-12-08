@@ -1,3 +1,3 @@
-interface DeleteUserRequest {
+export interface DeleteUserRequest {
     email: string
 }
