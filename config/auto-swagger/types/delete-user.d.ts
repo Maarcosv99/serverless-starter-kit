@@ -1,0 +1,3 @@
+interface DeleteUserRequest {
+    email: string
+}

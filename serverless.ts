@@ -2,12 +2,15 @@ import type { AWS } from '@serverless/typescript';
 
 import { DynamoDBResources } from '@config/dynamodb'
 import roleDynamoDB from '@config/dynamodb/iam.role'
+import documentation from '@config/auto-swagger'
+
 import { rests } from '@functions/rest'
 
 const serverlessConfiguration: AWS = {
   service: 'serverless-typescript',
   frameworkVersion: '3',
   plugins: [
+    'serverless-auto-swagger',
     'serverless-localstack',
     'serverless-esbuild',
     'serverless-offline'
@@ -58,7 +61,8 @@ const serverlessConfiguration: AWS = {
     },
     'serverless-offline': {
       useChildProcesses: true
-    }
+    },
+    autoswagger: documentation
   },
   resources: {
     Resources: {
