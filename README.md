@@ -42,11 +42,6 @@ bash run.docker.deploy.sh
 bash run.docker.tests.sh
 ```
 
-**🔅 If you want to deploy and test right away using just one command, run the code below:**
-
-```
-bash run.docker.deploy_and_test.sh
-```
 
 ### 🚀 Deploy to AWS:
 
